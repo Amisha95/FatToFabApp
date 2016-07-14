@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+ <LinearLayout android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exerciseTitle"
+                android:textSize="@dimen/textName"
+                android:textColor="@color/colorPrimaryDark"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:paddingRight="@dimen/marginTop"
+                android:paddingLeft="@dimen/marginTop"
+                android:paddingTop="@dimen/marginTop"
+                android:paddingBottom="@dimen/marginTop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exerciseDesc"
+                android:textSize="@dimen/textDesc"
+                android:layout_below="@id/exerciseTitle"
+                android:textColor="@color/black"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:paddingRight="@dimen/marginTop"
+                android:paddingLeft="@dimen/marginTop"
+                android:paddingTop="@dimen/marginTop"
+                android:paddingBottom="@dimen/marginTop" />
+
+ </LinearLayout>

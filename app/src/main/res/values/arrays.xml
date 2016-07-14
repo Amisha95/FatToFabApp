@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_entries">
+        <item>Exercises</item>
+        <item>Foods</item>
+    </string-array>
+
+    <string-array name="pref_values">
+        <item>exercises</item>
+        <item>foods</item>
+    </string-array>
+</resources>

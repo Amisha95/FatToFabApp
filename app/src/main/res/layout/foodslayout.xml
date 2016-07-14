@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+     <android.support.v7.widget.CardView
+         android:id="@+id/cardView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_marginLeft="@dimen/activity_horizontal_marginn"
+         android:layout_marginRight="@dimen/activity_horizontal_marginn"
+         android:elevation="@dimen/cardview_default_elevation"
+         android:focusable="true"
+         android:foreground="?selectableItemBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/foodTitle"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:paddingRight="@dimen/marginTop"
+            android:paddingLeft="@dimen/marginTop"
+            android:textSize="@dimen/textName"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingTop="@dimen/marginTop"
+            android:paddingBottom="@dimen/marginTop" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/foodNutrients"
+             android:textSize="@dimen/textDesc"
+             android:layout_below="@id/foodTitle"
+             android:textColor="@color/black"
+             style="@style/TextAppearance.AppCompat.Subhead"
+             android:paddingRight="@dimen/marginTop"
+             android:paddingLeft="@dimen/marginTop"
+             android:paddingTop="@dimen/marginTop"
+             android:paddingBottom="@dimen/marginTop" />
+
+       </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

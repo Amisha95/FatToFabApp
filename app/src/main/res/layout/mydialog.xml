@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/dialogtitle"
+        android:textSize="@dimen/textCheck"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <Button
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercises"
+        android:id="@+id/button2"
+        android:textColor="@color/colorAccent"
+        android:background="@color/colorPrimary"
+        android:shadowColor="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/marginBase"
+        android:layout_marginLeft="@dimen/marginBottom"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="80dp" />
+
+    <Button
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="@dimen/marginBottom"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:textColor="@color/colorAccent"
+        android:background="@color/colorPrimary"
+        android:shadowColor="@color/colorAccent"
+        android:layout_height="wrap_content"
+        android:text="Foods"
+        android:id="@+id/button3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:layout_marginTop="80dp" />
+</RelativeLayout>
