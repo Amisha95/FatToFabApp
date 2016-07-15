@@ -1,17 +1,7 @@
 package com.amisha.fattofabapp;
 
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-public class DisplayListView extends AppCompatActivity {
+/*public class DisplayListView extends AppCompatActivity {
 
     ArrayList<String> jsonString;
     ExercisesAdapter exercisesAdapter;
@@ -47,4 +37,4 @@ public class DisplayListView extends AppCompatActivity {
         listView.setAdapter(exercisesAdapter);
         exercisesAdapter.add(ExercisesActivity.exercisesList);
     }
-}
+} */
