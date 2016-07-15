@@ -9,20 +9,22 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExercisesAdapter extends ArrayAdapter {
 
-    List list=new ArrayList();
-    public ExercisesAdapter(Context context, int resource) {
-        super(context, resource);
+    private List<Exercise> list;
+
+
+    public ExercisesAdapter(Context context, int resource,List<Exercise> list) {
+        super(context, resource,list);
+        this.list=list;
     }
 
 
-    public void add(Exercise object) {
+    public void add(List<Exercise> object) {
         super.add(object);
-        list.add(object);
+        list.add((Exercise) object);
     }
 
     @Override
@@ -51,8 +53,8 @@ public class ExercisesAdapter extends ArrayAdapter {
             exerciseHolder= (ExerciseHolder) view.getTag();
         }
         Exercise exercise= (Exercise) this.getItem(position);
-        exerciseHolder.textView1.append(exercise.getName());
-        exerciseHolder.textView2.append(Html.fromHtml(exercise.getDescription()));
+        exerciseHolder.textView1.setText(exercise.getName());
+        exerciseHolder.textView2.setText(Html.fromHtml(exercise.getDescription()));
         return view;
     }
 

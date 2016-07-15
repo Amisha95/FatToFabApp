@@ -1,12 +1,11 @@
 package com.amisha.fattofabapp;
 
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,9 +23,14 @@ import java.util.ArrayList;
 
 public class ExercisesActivity extends AppCompatActivity {
 
+    ListView listView;
+    ExercisesAdapter exercisesAdapter;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercises);
+
+        exercisesAdapter=new ExercisesAdapter(this,R.layout.exerciseslayout);
+        listView=(ListView)findViewById(R.id.listView);
 
         ExerciseItemsLoadTask exerciseItemsLoadTask=new ExerciseItemsLoadTask();
         exerciseItemsLoadTask.execute();
@@ -36,7 +40,6 @@ public class ExercisesActivity extends AppCompatActivity {
     }
 
     public static ArrayList<Exercise> exercisesList;
-    private ArrayList<Exercise> jsonString;
 
     public class ExerciseItemsLoadTask extends AsyncTask<Void, Void, ArrayList<Exercise>> {
 
@@ -53,24 +56,21 @@ public class ExercisesActivity extends AppCompatActivity {
 
             for (int i = 0; i < exercisesList.size(); i++) {
 
-                jsonString=exerciseList;
-             /*   textView = (TextView)findViewById(R.id.exerciseTitle);
-                textView.append(exerciseList.get(i).getName() + "\n");
-                textView = (TextView)findViewById(R.id.exerciseTitle);
-                textView.append(Html.fromHtml(exerciseList.get(i).getDescription()) + "\n"); */
-                parseJSON();
+                listView.setAdapter(exercisesAdapter);
+                exercisesAdapter.add(exercisesList);
+                exercisesAdapter.notifyDataSetChanged();
             }
         }
     }
 
-    public void parseJSON(){
+  /*  public void parseJSON(){
         if(jsonString==null){
             Toast.makeText(getApplicationContext(),"Get JSON",Toast.LENGTH_LONG);
             Intent intent=new Intent(this,DisplayListView.class);
             intent.putExtra("JSON_Data",jsonString);
             startActivity(intent);
         }
-    }
+    } */
 
     public ArrayList<Exercise> getExercisesFromAPI() throws IOException {
 
