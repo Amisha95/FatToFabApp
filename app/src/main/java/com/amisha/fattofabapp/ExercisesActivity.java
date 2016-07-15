@@ -52,25 +52,13 @@ public class ExercisesActivity extends AppCompatActivity {
             return exercisesList;
         }
 
-        protected void onPostExecute(ArrayList<Exercise> exerciseList) {
-
-            for (int i = 0; i < exercisesList.size(); i++) {
+        protected void onPostExecute(ArrayList<Exercise> exercisesList) {
 
                 listView.setAdapter(exercisesAdapter);
                 exercisesAdapter.add(exercisesList);
                 exercisesAdapter.notifyDataSetChanged();
-            }
         }
     }
-
-  /*  public void parseJSON(){
-        if(jsonString==null){
-            Toast.makeText(getApplicationContext(),"Get JSON",Toast.LENGTH_LONG);
-            Intent intent=new Intent(this,DisplayListView.class);
-            intent.putExtra("JSON_Data",jsonString);
-            startActivity(intent);
-        }
-    } */
 
     public ArrayList<Exercise> getExercisesFromAPI() throws IOException {
 

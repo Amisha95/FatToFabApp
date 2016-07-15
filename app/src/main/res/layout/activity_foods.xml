@@ -23,15 +23,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/fragment2"
-        android:name="com.amisha.fattofabapp.FoodsActivityFragment"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:layout="@layout/foodslayout">
-    </fragment>
+        android:layout_height="wrap_content"
+        android:id="@+id/listView1"
+        android:layout_gravity="center_horizontal" />
 
 </android.support.design.widget.CoordinatorLayout>
