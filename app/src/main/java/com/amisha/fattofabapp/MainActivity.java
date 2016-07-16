@@ -15,6 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
                 myDialog.show(fragmentManager,"MyDialog");
             }
         });
+
+        AdView adView=(AdView)this.findViewById(R.id.adView);
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 
@@ -171,4 +178,6 @@ public class MainActivity extends AppCompatActivity {
            System.out.print(n);
        }
     }
+
+
 }
