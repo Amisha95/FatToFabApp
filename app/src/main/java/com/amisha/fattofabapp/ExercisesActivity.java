@@ -34,7 +34,7 @@ public class ExercisesActivity extends AppCompatActivity {
 
     static ArrayList<String> nameFavorites,descFavorites;
     ListView listView;
-    static ArrayList<Exercise> ExerciseFavorites;
+    Exercise exercise;
     static ArrayList<Boolean> favorite;
     ExercisesAdapter exercisesAdapter;
     protected void onCreate(Bundle savedInstanceState){
@@ -195,23 +195,25 @@ public class ExercisesActivity extends AppCompatActivity {
         return exerciseList;
     }
 
-    Exercise exercise;
-    public void favorite(View view){
-        Button b=(Button)findViewById(R.id.button4);
-        if(b.getText().equals("FAVORITE")){
-            b.setText("UNFAVORITE");
-            b.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 
-            ContentValues contentValues=new ContentValues();
-            contentValues.put(ExerciseProvider.NAME,exercise.name);
-            contentValues.put(ExerciseProvider.DESCRIPTION,exercise.description);
-            getContentResolver().insert(ExerciseProvider.CONTENT_URI,contentValues);
-        }
-        else {
-            b.setText("FAVORITE");
-            b.getBackground().setColorFilter(Color.YELLOW, PorterDuff.Mode.MULTIPLY);
-            getContentResolver().delete(Uri.parse("content://com.example.provider.Exercises/exercises"),"name=?"
-                    ,new String[] {exercise.name});
+    public void favorite(View view){
+        try {
+            Button b = (Button) findViewById(R.id.button4);
+            if (b.getText().equals("FAVORITE")) {
+                b.setText("UNFAVORITE");
+                b.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(ExerciseProvider.NAME, exercise.name);
+                contentValues.put(ExerciseProvider.DESCRIPTION, exercise.description);
+                getContentResolver().insert(ExerciseProvider.CONTENT_URI, contentValues);
+            } else {
+                b.setText("FAVORITE");
+                b.getBackground().setColorFilter(Color.YELLOW, PorterDuff.Mode.MULTIPLY);
+                getContentResolver().delete(Uri.parse("content://com.example.provider.Exercises/exercises"), "name=?"
+                        , new String[]{exercise.name});
+            }
+        } catch(NullPointerException e){
         }
     }
 }
