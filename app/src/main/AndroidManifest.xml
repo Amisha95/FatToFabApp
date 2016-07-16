@@ -41,6 +41,20 @@
                 android:value="MainActivity" />
         </activity>
 
+        <activity
+            android:name=".FavoritesActivity"
+            android:label="@string/title_activity_favorites"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+
+        <provider
+            android:authorities="com.example.provider.Exercises"
+            android:name=".ExerciseProvider"/>
+
     </application>
 
 </manifest>

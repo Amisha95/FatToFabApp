@@ -1,10 +1,19 @@
 package com.amisha.fattofabapp;
 
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -23,7 +32,10 @@ import java.util.ArrayList;
 
 public class ExercisesActivity extends AppCompatActivity {
 
+    static ArrayList<String> nameFavorites,descFavorites;
     ListView listView;
+    static ArrayList<Exercise> ExerciseFavorites;
+    static ArrayList<Boolean> favorite;
     ExercisesAdapter exercisesAdapter;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,6 +49,65 @@ public class ExercisesActivity extends AppCompatActivity {
 
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            favorite=bindExercisesToFavorites();
+            LoadFavorites();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public ArrayList<Boolean> bindExercisesToFavorites(){
+        ArrayList<Boolean> result=new ArrayList<Boolean>();
+        for(int i=0;i<exerciseList.size();i++){
+            result.add(false);
+        }
+        for(String favoriteNames: nameFavorites){
+            for(int i=0;i<exerciseList.size();i++){
+                if(favoriteNames.equals(exerciseList.get(i))){
+                    result.set(i,true);
+                }
+            }
+        }
+        return result;
+    }
+
+    public void LoadFavorites(){
+        Cursor cursor=null;
+        try{
+            String URL="content://com.example.provider.Exercises/exercises";
+            Uri favorites=Uri.parse(URL);
+            cursor=getApplicationContext().getContentResolver().query(favorites,null,null,null,"name");
+            nameFavorites=new ArrayList<String>();
+            descFavorites=new ArrayList<String>();
+            favorite=new ArrayList<Boolean>();
+            if(cursor==null)
+                return;
+            while(cursor.moveToNext()){
+                nameFavorites.add(cursor.getString(cursor.getColumnIndex(ExerciseProvider.NAME)));
+                descFavorites.add(cursor.getString(cursor.getColumnIndex(ExerciseProvider.DESCRIPTION)));
+                favorite.add(true);
+            }
+        } finally {
+            cursor.close();
+        }
     }
 
     public static ArrayList<Exercise> exercisesList;
@@ -123,5 +194,25 @@ public class ExercisesActivity extends AppCompatActivity {
 
         return exerciseList;
     }
+
+    Exercise exercise;
+    public void favorite(View view){
+        Button b=(Button)findViewById(R.id.button4);
+        if(b.getText().equals("FAVORITE")){
+            b.setText("UNFAVORITE");
+            b.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+
+            ContentValues contentValues=new ContentValues();
+            contentValues.put(ExerciseProvider.NAME,exercise.name);
+            contentValues.put(ExerciseProvider.DESCRIPTION,exercise.description);
+            getContentResolver().insert(ExerciseProvider.CONTENT_URI,contentValues);
+        }
+        else {
+            b.setText("FAVORITE");
+            b.getBackground().setColorFilter(Color.YELLOW, PorterDuff.Mode.MULTIPLY);
+            getContentResolver().delete(Uri.parse("content://com.example.provider.Exercises/exercises"),"name=?"
+                    ,new String[] {exercise.name});
+        }
     }
+}
 
