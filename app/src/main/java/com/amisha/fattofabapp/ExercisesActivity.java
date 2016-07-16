@@ -1,10 +1,7 @@
 package com.amisha.fattofabapp;
 
 
-import android.content.ContentValues;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -193,28 +188,6 @@ public class ExercisesActivity extends AppCompatActivity {
         }
 
         return exerciseList;
-    }
-
-
-    public void favorite(View view){
-        try {
-            Button b = (Button) findViewById(R.id.button4);
-            if (b.getText().equals("FAVORITE")) {
-                b.setText("UNFAVORITE");
-                b.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(ExerciseProvider.NAME, exercise.name);
-                contentValues.put(ExerciseProvider.DESCRIPTION, exercise.description);
-                getContentResolver().insert(ExerciseProvider.CONTENT_URI, contentValues);
-            } else {
-                b.setText("FAVORITE");
-                b.getBackground().setColorFilter(Color.YELLOW, PorterDuff.Mode.MULTIPLY);
-                getContentResolver().delete(Uri.parse("content://com.example.provider.Exercises/exercises"), "name=?"
-                        , new String[]{exercise.name});
-            }
-        } catch(NullPointerException e){
-        }
     }
 }
 

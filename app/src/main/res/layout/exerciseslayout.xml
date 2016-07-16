@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/button4"
         android:text="FAVORITE"
-        android:onClick="favorite"
         android:layout_gravity="right"/>
 
     <TextView
