@@ -70,7 +70,7 @@ public class FoodsActivity extends AppCompatActivity
             String JSONResult;
             try{
                 String URLString=null;
-                URLString="http://api.nal.usda.gov/ndb/list?format=json&lt=f&offset=900&max=100&sort=n&api_key"+API_KEY;
+                URLString="http://api.nal.usda.gov/ndb/list?format=json&lt=f&offset=900&sort=n&api_key="+API_KEY;
                 URL url=new URL(URLString);
                 connection= (HttpURLConnection)url.openConnection();
                 connection.setRequestMethod("GET");
