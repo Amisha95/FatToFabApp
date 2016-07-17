@@ -18,4 +18,5 @@
     <dimen name="textName">25sp</dimen>
     <dimen name="list_side_margin">10dp</dimen>
     <dimen name="textNames">20sp</dimen>
+    <dimen name="widgetText">15sp</dimen>
 </resources>
