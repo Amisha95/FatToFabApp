@@ -9,7 +9,9 @@ import com.google.android.gms.analytics.Tracker;
 
 public class MyApplication extends Application {
     public Tracker mTracker;
+
     public void startTracking(){
+
         if(mTracker==null) {
             GoogleAnalytics googleAnalytics = GoogleAnalytics.getInstance(this);
             mTracker = googleAnalytics.newTracker(R.xml.track_app);
