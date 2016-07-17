@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="ga_trackingId">UA-80888119-1</string>
+    <string name="ga_autoActivityTracking">true</string>
+    <screenName name="com.amisha.fattofabapp.MainActivity">Main Screen</screenName>
+    <screenName name="com.amisha.fattofabapp.ExercisesActivity">Exercises Screen</screenName>
+    <screenName name="com.amisha.fattofabapp.FoodsActivity">Foods Screen</screenName>
+    <screenName name="com.amisha.fattofabapp.FavoritesActivity">Favorites Screen</screenName>
+</resources>

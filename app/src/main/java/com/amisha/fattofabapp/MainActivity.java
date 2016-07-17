@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         AdView adView=(AdView)this.findViewById(R.id.adView);
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        ((MyApplication) getApplication()).startTracking();
     }
 
 

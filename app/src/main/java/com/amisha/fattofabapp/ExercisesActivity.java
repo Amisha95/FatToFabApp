@@ -62,8 +62,9 @@ public class ExercisesActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            loadFavorites();
             favorite=bindExercisesToFavorites();
-            LoadFavorites();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -84,7 +85,7 @@ public class ExercisesActivity extends AppCompatActivity {
         return result;
     }
 
-    public void LoadFavorites(){
+    public void loadFavorites(){
         Cursor cursor=null;
         try{
             String URL="content://com.example.provider.Exercises/exercises";
