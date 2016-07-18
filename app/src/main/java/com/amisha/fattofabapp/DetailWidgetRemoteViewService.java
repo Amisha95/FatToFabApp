@@ -65,7 +65,7 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService
                 remoteViews.setTextViewText(R.id.widgetText, name);
 
                 final Intent finalIntent=new Intent();
-             //   finalIntent.setData(ExerciseProvider);
+            //    finalIntent.setData(ExerciseProvider.DATABASE_NAME);
                 remoteViews.setOnClickFillInIntent(R.id.widget_list,finalIntent);
                 return remoteViews;
             }

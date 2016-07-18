@@ -18,7 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="net.thepurge.volumeprofiles.plus.VolumeProfilesWidget.ACTION_WIDGET_CONFIGURE"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -52,6 +52,10 @@ dispatching on non-Google Play devices -->
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/app_widget_provider"/>
         </receiver>
+
+        <service android:name=".DetailWidgetRemoteViewService"
+            android:enabled="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
         <activity
             android:name=".ExercisesActivity"
