@@ -14,8 +14,8 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService
             ExerciseProvider.DATABASE_NAME + "." + ExerciseProvider.NAME,
     };
 
-    static final int INDEX_EXERCISES_ID = 0;
-    static final int INDEX_EXERCISE_NAME = 1;
+ //   static final int INDEX_EXERCISES_ID = 0;
+    static final int INDEX_EXERCISE_NAME = 0;
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
@@ -33,8 +33,7 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService
                     cursor.close();
                 }
                 final long identityToken= Binder.clearCallingIdentity();
-                cursor=getContentResolver().query(ExerciseProvider.CONTENT_URI,EXERCISES_COLUMNS,ExerciseProvider.EXERCISES_ID
-                        + "=?",new String[] {"1"},null);
+                cursor=getContentResolver().query(ExerciseProvider.CONTENT_URI,EXERCISES_COLUMNS,null,null,null);
                 Binder.restoreCallingIdentity(identityToken);
             }
 
@@ -83,7 +82,7 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService
             @Override
             public long getItemId(int position) {
                 if(cursor.moveToPosition(position))
-                    return cursor.getInt(INDEX_EXERCISES_ID);
+                    return cursor.getInt(INDEX_EXERCISE_NAME);
                 return position;
             }
 
