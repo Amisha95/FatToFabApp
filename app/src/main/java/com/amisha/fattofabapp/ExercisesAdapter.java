@@ -77,7 +77,8 @@ public class ExercisesAdapter extends ArrayAdapter {
                     } else {
                         exerciseHolder.button.setText("FAVORITE");
                         exerciseHolder.button.getBackground().setColorFilter(Color.YELLOW, PorterDuff.Mode.MULTIPLY);
-                        getContext().getContentResolver().delete(Uri.parse("content://com.example.provider.Exercises/exercises"), "name=?"
+                        getContext().getContentResolver().delete(Uri.parse("content://com.example.provider.Exercises/exercises"),
+                                "name=?"
                                 , new String[]{exercise.name});
                     }
                 } catch(NullPointerException e){

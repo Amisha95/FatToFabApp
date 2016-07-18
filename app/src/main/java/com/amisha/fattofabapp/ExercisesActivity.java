@@ -30,7 +30,7 @@ public class ExercisesActivity extends AppCompatActivity {
 
     static ArrayList<String> nameFavorites,descFavorites;
     ListView listView;
-    Exercise exercise;
+
     static ArrayList<Boolean> favorite;
     ExercisesAdapter exercisesAdapter;
     protected void onCreate(Bundle savedInstanceState){
@@ -66,7 +66,8 @@ public class ExercisesActivity extends AppCompatActivity {
             loadFavorites();
             favorite=bindExercisesToFavorites();
 
-            Intent intent=new Intent(this,FavoritesActivity.class);
+            Intent intent=new Intent(this,FavoritesActivity.class).putExtra("favorite",favorite)
+                    .putExtra("name",nameFavorites).putExtra("desc",descFavorites);
             startActivity(intent);
         }
 

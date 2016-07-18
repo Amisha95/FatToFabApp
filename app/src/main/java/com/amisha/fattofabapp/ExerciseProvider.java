@@ -44,7 +44,7 @@ public class ExerciseProvider extends ContentProvider {
     static final int DATABASE_VERSION = 1;
     static final String CREATE_DB_TABLE =
             " CREATE TABLE " + EXERCISES_TABLE_NAME +
-                    " (id INTEGER PRIMARY KEY," + "name," +
+                    " (id INTEGER PRIMARY KEY," + "name UNIQUE ON CONFLICT REPLACE," +
                     " description);";
 
     private class DatabaseHelper extends SQLiteOpenHelper{

@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Spinner spinner=(Spinner)findViewById(R.id.spinner);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                  Age=parent.getSelectedItem().toString();
