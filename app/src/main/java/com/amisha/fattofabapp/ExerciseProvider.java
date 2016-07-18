@@ -25,6 +25,7 @@ public class ExerciseProvider extends ContentProvider {
 
     static final String NAME = "name";
     static final String DESCRIPTION = "description";
+    static final String ID="id";
 
     private static HashMap<String,String> EXERCISES_PROJECTION_MAP;
     static final int EXERCISES=1;
@@ -43,7 +44,7 @@ public class ExerciseProvider extends ContentProvider {
     static final int DATABASE_VERSION = 1;
     static final String CREATE_DB_TABLE =
             " CREATE TABLE " + EXERCISES_TABLE_NAME +
-                    " (name," +
+                    " (id INTEGER PRIMARY KEY," + "name," +
                     " description);";
 
     private class DatabaseHelper extends SQLiteOpenHelper{

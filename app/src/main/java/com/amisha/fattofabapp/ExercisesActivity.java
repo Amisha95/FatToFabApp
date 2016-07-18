@@ -1,6 +1,7 @@
 package com.amisha.fattofabapp;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -65,6 +66,8 @@ public class ExercisesActivity extends AppCompatActivity {
             loadFavorites();
             favorite=bindExercisesToFavorites();
 
+            Intent intent=new Intent(this,FavoritesActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

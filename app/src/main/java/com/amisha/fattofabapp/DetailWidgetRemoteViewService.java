@@ -11,10 +11,10 @@ import android.widget.RemoteViewsService;
 public class DetailWidgetRemoteViewService extends RemoteViewsService
 {
     private static final String[] EXERCISES_COLUMNS = {
-            ExerciseProvider.DATABASE_NAME + "." + ExerciseProvider.NAME,
+            ExerciseProvider.DATABASE_NAME + "." + ExerciseProvider.NAME, ExerciseProvider.ID
     };
 
- //   static final int INDEX_EXERCISES_ID = 0;
+    static final int INDEX_EXERCISES_ID = 1;
     static final int INDEX_EXERCISE_NAME = 0;
 
     @Override
@@ -59,6 +59,7 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService
                 }
                 RemoteViews remoteViews=new RemoteViews(getPackageName(), R.layout.widget_layout);
                 String name=cursor.getString(INDEX_EXERCISE_NAME);
+                int id=cursor.getInt(INDEX_EXERCISES_ID);
 
 
                 remoteViews.setTextViewText(R.id.widgetText, name);
@@ -82,7 +83,7 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService
             @Override
             public long getItemId(int position) {
                 if(cursor.moveToPosition(position))
-                    return cursor.getInt(INDEX_EXERCISE_NAME);
+                    return cursor.getInt(INDEX_EXERCISES_ID);
                 return position;
             }
 
